@@ -359,7 +359,12 @@ sub run_this_test_program {
             local %SIG = %SIG;
             use warnings 'uninitialized';
             $builder->{'Test::Aggregate::Builder'}{file_for}{$package} = $test;
+            local $builder->{'Test::Aggregate::Builder'}{running} = $package;
             eval { $package->run_the_tests };
+            if ($@ && $@ == $Test::Aggregate::Builder::skip) {
+                $builder->skip( $builder->{'Test::Aggregate::Builder'}{skip_all}{$package} );
+                return;
+            }
             $@;
         }
     };

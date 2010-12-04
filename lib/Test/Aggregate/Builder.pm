@@ -94,6 +94,8 @@ sub Test::Builder::no_header { 1 }
     my $plan;
     BEGIN { $plan = \&Test::Builder::plan }
 
+    our $skip = \1;
+
     sub Test::Builder::plan {
         delete $_[0]->{Have_Plan};
         $_[0]->{'Test::Aggregate::Builder'} ||= {};
@@ -101,6 +103,8 @@ sub Test::Builder::no_header { 1 }
         if ( 'skip_all' eq ( $_[1] || '' ) ) {
             my $callpack = caller(1);
             $tab_builder->{skip_all}{$callpack} = $_[2];
+            my $running_test = $tab_builder->{running};
+            die $skip if defined $running_test && $running_test eq $callpack;
             return;
         }
 

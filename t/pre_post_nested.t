@@ -45,6 +45,6 @@ subtest 'nested tests' => sub {
 };
 is $startup,  1, 'Startup should be called once';
 is $shutdown, 1, '... as should shutdown';
-is $setup,    7, 'Setup should be called once for each test program';
-is $teardown, 7, '... as should teardown';
+is $setup,    8, 'Setup should be called once for each test program';
+is $teardown, 8, '... as should teardown';
 ok $found_it, '... and file names should be passed to setup';

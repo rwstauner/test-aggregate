@@ -23,6 +23,13 @@ my $builder = Module::Build->new(
         'Perl::Tidy'           => 20060614,
         'Test::More'           => '0.94',
     },
+    meta_merge =>
+    {
+        resources =>
+        {
+            repository => "https://github.com/rafl/test-aggregate",
+        },
+    },
     add_to_cleanup     => ['Test-Aggregate-*'],
     create_makefile_pl => 'traditional',
 );

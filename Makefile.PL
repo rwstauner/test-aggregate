@@ -9,7 +9,8 @@ WriteMakefile
                            'Test::Harness' => '3.09',
                            'Test::Most' => '0.21',
                            'Test::NoWarnings' => 0,
-                           'Test::Simple' => '0.94'
+                           'Test::Simple' => '0.94',
+                           'Test::Trap' => 0
                          },
           'INSTALLDIRS' => 'site',
           'EXE_FILES' => [],

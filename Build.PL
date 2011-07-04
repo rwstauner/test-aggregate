@@ -12,6 +12,7 @@ my $builder = Module::Build->new(
     build_requires    => {
         'Test::Simple' => 0.94,    # we fail on the common 0.62
         'Test::Most'   => 0.21,
+        'Test::Trap'   => 0,
     },
     requires => {
         'Test::Harness'    => 3.09,

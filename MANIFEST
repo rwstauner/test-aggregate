@@ -23,5 +23,6 @@ t/nested.t
 t/pre_post.t
 t/pre_post_nested.t
 t/subs.t
+t/verbose.t
 xt/author/pod-coverage.t
 xt/author/pod.t

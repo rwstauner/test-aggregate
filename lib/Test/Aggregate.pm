@@ -260,6 +260,8 @@ sub _do_dry_run {
 sub run {
     my $self  = shift;
 
+    my $verbose = $self->_verbose;
+
     my @tests = $self->_get_tests;
     if ( $self->_dry ) {
         my $current = 1;
@@ -307,7 +309,7 @@ sub run {
         $current_test++;
         my ( $test, $package ) = @$data;
         $self->_setup->($test) if $self->_setup;
-        run_this_test_program( $package => $test, $current_test, $total_tests, 2 );
+        run_this_test_program( $package => $test, $current_test, $total_tests, $verbose );
         if ( my $error = $@ ) {
             Test::More::ok( 0, "Error running ($test):  $error" );
         }

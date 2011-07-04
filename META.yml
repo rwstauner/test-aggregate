@@ -5,6 +5,7 @@ author:
 build_requires:
   Test::Most: 0.21
   Test::Simple: 0.94
+  Test::Trap: 0
 configure_requires:
   Module::Build: 0.36
 generated_by: 'Module::Build version 0.3607'

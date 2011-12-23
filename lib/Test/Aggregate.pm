@@ -45,7 +45,7 @@ $VERSION = eval $VERSION;
 
 B<WARNING>:  this is ALPHA code.  The interface is not guaranteed to be
 stable.  Further, check out L<Test::Aggregate::Nested> (included with this
-distribution).  It's a more robust implemenation which does not have the same
+distribution).  It's a more robust implementation which does not have the same
 limitations as C<Test::Aggregate>.
 
 A common problem with many test suites is that they can take a long time to

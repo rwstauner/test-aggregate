@@ -145,7 +145,7 @@ sub run {
         }
         eval <<"        END";
         package $package;
-        Test::Aggregate::Nested::subtest("Tests for $test", sub { do \$test });
+        Test::Aggregate::Nested::_do_file_as_subtest(\$test);
         END
         diag $@ if $@;
         $test_phase{teardown}->($test);
@@ -154,6 +154,38 @@ sub run {
 }
 
 sub run_this_test_program { }
+
+sub _do_file_as_subtest {
+    my ($test) = @_;
+    subtest("Tests for $test", sub {
+        my $error;
+        {
+            local ($@, $!);
+            # if do("file") fails it will return undef (and set $@ or $!)
+            unless(defined( my $return = do $test )){
+                # If there was an error be sure to propogate it.
+                # This isn't quite the same as what's described by `perldoc -f do`
+                # because there are no rules about what a .t file should return.
+                # Besides all we do after this is diag() the error.
+                my $ex_class = 'Test::Builder::Exception';
+                if( my $e = $@ ){
+                    $error = "Couldn't parse $test: $e"
+                        unless (
+                            # a skip in a subtest will be an object
+                            ref($e) ? eval { $e->isa($ex_class) } :
+                                # a skip in a BEGIN ("use Test::More skip_all => $message") gets stringified
+                                $e =~ /^\Q${ex_class}=HASH(0x\E[[:xdigit:]]+\Q)BEGIN failed--compilation aborted\E/
+                        );
+                }
+                elsif( $! ){
+                    $error = "Error during $test: $!";
+                }
+            }
+        }
+        # show the error but don't halt everything
+        Test::More::diag($error) if $error;
+    });
+}
 
 1;
 

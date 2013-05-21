@@ -183,7 +183,7 @@ sub _do_file_as_subtest {
             }
         }
         # show the error but don't halt everything
-        Test::More::diag($error) if $error;
+        Test::More::ok(0, "Error running ($test):  $error") if $error;
     });
 }
 

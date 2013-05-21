@@ -1,5 +1,10 @@
 Revision history for Test-Aggregate
 
+        - Avoid printing unnecessary "ok - "'s diag()s when they are passing,
+          and when the 'verbose' option is set to 0.
+            - The problem was that the $verbose option was hard-coded as
+              '2' deep inside the module.
+
 0.364  04/12/2010
         - Allow skipping the rest of a test using
             plan skip_all => $reason

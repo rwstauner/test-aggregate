@@ -12,6 +12,7 @@ my $builder = Module::Build->new(
     build_requires    => {
         'Test::Simple' => 0.94,    # we fail on the common 0.62
         'Test::Most'   => 0.21,
+        'Test::Trap'   => 0,
     },
     requires => {
         'Test::Harness'    => 3.09,
@@ -22,6 +23,13 @@ my $builder = Module::Build->new(
         'Data::Dump::Streamer' => 1.11,
         'Perl::Tidy'           => 20060614,
         'Test::More'           => '0.94',
+    },
+    meta_merge =>
+    {
+        resources =>
+        {
+            repository => "https://github.com/rafl/test-aggregate",
+        },
     },
     add_to_cleanup     => ['Test-Aggregate-*'],
     create_makefile_pl => 'traditional',

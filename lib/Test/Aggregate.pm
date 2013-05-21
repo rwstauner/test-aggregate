@@ -371,7 +371,7 @@ sub run_this_test_program {
         }
     };
 
-    if ($verbose) {
+    {
         my $test_name = "$test ($current_test out of $num_tests)";
         my $failed    = _any_tests_failed();
         chomp $error if defined $error;
@@ -379,7 +379,11 @@ sub run_this_test_program {
         my $ok = $failed || $error
                 ? "not ok - $test_name $error"
                 : "    ok - $test_name";
+      # don't diag if verbose is zero
+      if( $verbose ){
         Test::More::diag($ok) if $error or $failed or $verbose == $VERBOSE{all};
+      }
+        # but do register as a failure
         if ($error or $failed) {
             Test::More::ok(0, "Error running ($test):  $error");
             # XXX this should be fine since these keys are not actually used

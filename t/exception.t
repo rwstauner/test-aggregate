@@ -35,6 +35,12 @@ sub aggregate {
         })->run;
     }
 
-    is scalar(grep { /Ensure exceptions are not hidden during aggregate tests/ } @{ $tb->{diag} }), 1,
-        'Exception displayed via diag()';
+    is(
+      scalar(
+        grep { $_->[0] == 0 && $_->[1] =~ /Ensure exceptions are not hidden during aggregate tests/ }
+          @{ $tb->{ok} }
+      ),
+      1,
+      "Exception shown as ok(0) for $mod"
+    );
 }

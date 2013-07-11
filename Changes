@@ -1,5 +1,8 @@
 Revision history for Test-Aggregate
 
+0.366  2013-07-11
+        - Update metadata; Re-release to reindex with additional permissions
+
 0.365  2013-07-10
         - Avoid printing unnecessary "ok - "'s diag()s when they are passing,
           and when the 'verbose' option is set to 0.

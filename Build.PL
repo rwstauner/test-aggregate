@@ -31,6 +31,7 @@ my $builder = Module::Build->new(
             repository => "https://github.com/rwstauner/test-aggregate",
         },
         x_contributors => [
+          'Curtis "Ovid" Poe <ovid@cpan.org>',
           'Florian Ragwitz <flora@cpan.org>',
           'Shlomi Fish <shlomif@cpan.org>',
           'Randy Stauner <rwstauner@cpan.org>',

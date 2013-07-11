@@ -28,7 +28,7 @@ my $builder = Module::Build->new(
     {
         resources =>
         {
-            repository => "https://github.com/rafl/test-aggregate",
+            repository => "https://github.com/rwstauner/test-aggregate",
         },
     },
     add_to_cleanup     => ['Test-Aggregate-*'],

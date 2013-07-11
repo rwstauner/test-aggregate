@@ -17,6 +17,8 @@ my %VERBOSE = (
 );
 my $BUILDER = Test::Builder->new;
 
+=encoding utf-8
+
 =head1 NAME
 
 Test::Aggregate - Aggregate C<*.t> tests to make them run faster.

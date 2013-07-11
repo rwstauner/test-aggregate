@@ -3,6 +3,8 @@ package Test::Aggregate::Builder;
 use strict;
 use warnings;
 
+=encoding utf-8
+
 =head1 NAME
 
 Test::Aggregate::Builder - Internal overrides for Test::Builder.

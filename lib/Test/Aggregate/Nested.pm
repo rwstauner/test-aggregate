@@ -11,6 +11,8 @@ use FindBin;
 use vars qw(@ISA @EXPORT @EXPORT_OK $VERSION);
 @ISA = 'Test::Aggregate::Base';
 
+=encoding utf-8
+
 =head1 NAME
 
 Test::Aggregate::Nested - Aggregate C<*.t> tests to make them run faster.

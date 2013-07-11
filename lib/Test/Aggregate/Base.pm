@@ -208,6 +208,8 @@ sub _get_package {
 
 __END__
 
+=encoding utf-8
+
 =head1 NAME
 
 Test::Aggregate::Base - Base class for aggregated tests.

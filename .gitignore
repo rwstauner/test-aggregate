@@ -1,3 +1,4 @@
+Test-Aggregate-*
 .*
 !.mailmap
 !.gitignore

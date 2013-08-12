@@ -161,6 +161,8 @@ sub _do_file_as_subtest {
     my ($test) = @_;
     subtest("Tests for $test", sub {
         my $error;
+        my $diag;
+
         {
             local ($@, $!);
             # if do("file") fails it will return undef (and set $@ or $!)
@@ -168,10 +170,18 @@ sub _do_file_as_subtest {
                 # If there was an error be sure to propogate it.
                 # This isn't quite the same as what's described by `perldoc -f do`
                 # because there are no rules about what a .t file should return.
-                # Besides all we do after this is diag() the error.
+                # If the file doesn't return a defined value there's no way to
+                # tell the difference between a test that errored and one that
+                # returned undef but did something that happened to set `$!`
+                # (for example, a file that skips when it looks for a file that
+                # isn't found), so we shouldn't treat it as an error.
+                # If the file fails to read then subtest() will complain
+                # that no tests were run (and consider it a failure).
+                # That should be sufficient.
+
                 my $ex_class = 'Test::Builder::Exception';
                 if( my $e = $@ ){
-                    $error = "Couldn't parse $test: $e"
+                    $error = "Couldn't parse '$test': $e"
                         unless (
                             # a skip in a subtest will be an object
                             ref($e) ? eval { $e->isa($ex_class) } :
@@ -179,12 +189,27 @@ sub _do_file_as_subtest {
                                 $e =~ /^\Q${ex_class}=HASH(0x\E[[:xdigit:]]+\Q)BEGIN failed--compilation aborted\E/
                         );
                 }
-                elsif( $! ){
-                    $error = "Error during $test: $!";
+                else {
+                    # It might have been an error, or might not, so try to get
+                    # the author to help us out.
+                    $diag = <<TEST_DIAG;
+#
+# WARNING:
+# It is unknown if '$test' actually finished.
+# To remove this warning have the test script end with a defined value.
+#
+TEST_DIAG
+                    # This *may* indicate a failure to read the file.
+                    $diag .= <<TEST_DIAG if $!;
+# The following error was set (\$!):
+# $!
+#
+TEST_DIAG
                 }
             }
         }
         # show the error but don't halt everything
+        Test::More::diag($diag) if $diag;
         Test::More::ok(0, "Error running ($test):  $error") if $error;
     });
 }

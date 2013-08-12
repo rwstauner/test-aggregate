@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More 'no_plan';
 
 SKIP: {
     {
@@ -13,5 +13,5 @@ SKIP: {
     skip 'to end', 1;
 }
 
-# Return a defined value.
-0;
+# Don't return a value, the 'last skip' should jump out
+# so the file returns undef.

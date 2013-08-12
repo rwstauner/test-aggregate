@@ -3,44 +3,40 @@
 use strict;
 use warnings;
 use Test::More;
+use lib 't/lib';
+use AggTestTester;
+use File::Spec::Functions qw(catfile); # core
 
-aggregate('Test::Aggregate');
+my $dir = 'aggtests-extras';
+my @agg_tests = qw( die );
+my @agg_paths = map { catfile($dir, "$_.t") } @agg_tests;
 
-SKIP: {
-    skip 'Need Test::More::subtest() for nested tests', 1
-        if !Test::More->can('subtest');
+my @exp_results = (
+  # The test starts with an ok(1).
+  [
+    1, qr{$dir.die\.t \*\*\*\*\* 1},
+    'Ran die.t',
+  ],
 
-    aggregate('Test::Aggregate::Nested');
-}
+  # This is the important one:
+  [
+    0, qr/Ensure exceptions are not hidden during aggregate tests/,
+    "Exception shown as ok(0)",
+  ],
+);
+
+aggregate('Test::Aggregate', \@agg_paths, \@exp_results);
+
+only_with_nested {
+  push @exp_results, (
+    # Nested will add the parent 'ok' for the subtest.
+    [
+      1, qr{Tests for $dir.die\.t},
+      'Subtest completed for die.t',
+    ],
+  );
+
+  aggregate('Test::Aggregate::Nested', \@agg_paths, \@exp_results);
+};
 
 done_testing;
-
-sub aggregate {
-    my $mod = shift;
-    eval "require $mod" or die $@;
-
-    # Test::Tester didn't work well with Test::Aggregate
-    # so just override the functions used in the tests
-    my $tb = {};
-    {
-        no strict 'refs';
-        no warnings 'redefine';
-        my $ok = \&Test::More::ok;
-        # call the original ok with a true value so that there is a passing test
-        local *Test::More::ok   = sub ($;$) { push @{ $tb->{ok}   }, [@_]; $ok->(1, 'shh'); };
-        local *Test::More::diag = sub { push @{ $tb->{diag} }, $_[0] };
-
-        $mod->new({
-            dirs => 'aggtests-exception',
-        })->run;
-    }
-
-    is(
-      scalar(
-        grep { $_->[0] == 0 && $_->[1] =~ /Ensure exceptions are not hidden during aggregate tests/ }
-          @{ $tb->{ok} }
-      ),
-      1,
-      "Exception shown as ok(0) for $mod"
-    );
-}

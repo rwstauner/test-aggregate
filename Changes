@@ -1,5 +1,8 @@
 Revision history for Test-Aggregate
 
+        - Actually include previously added tests to the dist
+          (Where are you Dist::Zilla?)
+
 0.366  2013-07-11
         - Update metadata; Re-release to reindex with additional permissions
 

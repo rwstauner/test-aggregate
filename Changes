@@ -1,5 +1,13 @@
 Revision history for Test-Aggregate
 
+0.367  2013-08-12
+        - Improve Test::Aggregate::Nested error handling:
+          Don't treat undef as a failure;
+          Show a warning and let Test::More::subtest() determine the result.
+          This solves the false negative reported in
+          https://rt.cpan.org/Public/Bug/Display.html?id=87240
+          Thanks to the venerable Andreas J. König for reporting!
+        - Add more tests.
         - Actually include previously added tests to the dist
           (Where are you Dist::Zilla?)
 

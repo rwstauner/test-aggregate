@@ -4,6 +4,9 @@ use Module::Build;
 
 use 5.006;
 
+# git ls-files lib | xargs perl-reversion -bump
+# perl Build.PL && ./Build dist
+
 my $builder = Module::Build->new(
     module_name       => 'Test::Aggregate',
     license           => 'perl',

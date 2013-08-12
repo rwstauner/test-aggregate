@@ -9,7 +9,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.40
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4005, CPAN::Meta::Converter version 2.131560'
+generated_by: 'Module::Build version 0.4007, CPAN::Meta::Converter version 2.132140'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -18,16 +18,16 @@ name: Test-Aggregate
 provides:
   Test::Aggregate:
     file: lib/Test/Aggregate.pm
-    version: 0.366
+    version: 0.367
   Test::Aggregate::Base:
     file: lib/Test/Aggregate/Base.pm
-    version: 0.366
+    version: 0.367
   Test::Aggregate::Builder:
     file: lib/Test/Aggregate/Builder.pm
-    version: 0.366
+    version: 0.367
   Test::Aggregate::Nested:
     file: lib/Test/Aggregate/Nested.pm
-    version: 0.366
+    version: 0.367
 recommends:
   Data::Dump::Streamer: 1.11
   Perl::Tidy: 20060614
@@ -39,7 +39,7 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: https://github.com/rwstauner/test-aggregate
-version: 0.366
+version: 0.367
 x_contributors:
   - "Curtis \"Ovid\" Poe <ovid@cpan.org>"
   - 'Florian Ragwitz <flora@cpan.org>'

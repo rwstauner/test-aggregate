@@ -189,7 +189,10 @@ sub _do_file_as_subtest {
                                 $e =~ /^\Q${ex_class}=HASH(0x\E[[:xdigit:]]+\Q)BEGIN failed--compilation aborted\E/
                         );
                 }
-                else {
+                # If tests have been run we can assume the file was read.
+                # If not, print a warning message.
+                # Either way Test::Builder will handle marking it as pass/fail.
+                elsif( scalar(Test::Builder->new->details) == 0 ){
                     # It might have been an error, or might not, so try to get
                     # the author to help us out.
                     $diag = <<TEST_DIAG;

@@ -36,6 +36,7 @@ sub new {
     mod   => $mod,
     tests => $tests,
     exp   => $exp,
+    diag  => delete($extra{diag}) || [],
     args  => { %extra },
   }, $class;
 }
@@ -118,14 +119,26 @@ sub run {
 
   # Check diag to see that we ran each script.
   # This is redundant with the setup block test but it makes me feel good.
-  my @exp_diag = @{ $self->{tests} };
-  my $total = @exp_diag;
-  foreach my $diag ( @{ $tb->{diag} } ){
-    $diag =~ / $exp_diag[0] \(\d out of $total\)/
-      and shift(@exp_diag);
-    last if !@exp_diag;
+  my @exp_diags = (
+    (map { qr/ $_ \(\d out of ${\scalar @{ $self->{tests} }}\)/ }
+      @{ $self->{tests} }),
+    @{ $self->{diag} },
+  );
+  my @diags = @{ $tb->{diag} };
+  my @unmatched;
+
+  is scalar(@exp_diags), scalar(@diags), 'expected number of diagnostics';
+
+  DIAG: while( my $diag = shift @diags ){
+    foreach my $exp_msg ( @exp_diags ){
+      $diag =~ $exp_msg
+        and next DIAG;
+    }
+    push @unmatched, $diag;
   }
-  is scalar(@exp_diag), 0, "$mod - All aggregated test scripts found in diag";
+
+  is scalar(@unmatched), 0, 'all diagnostics matched'
+    or diag explain \@unmatched;
 }
 
 1;

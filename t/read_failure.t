@@ -22,12 +22,17 @@ my $path = catfile(qw(aggtests-does-not-exist no-really-it-should-not-exist.t));
 only_with_nested {
   my $gen_exp_results = sub {
     my $path = shift;
-    return [
+    return ([
       [
         0, qr/No tests run for subtest .+?\Q$path\E/,
         "Read failure results in failed test",
       ]
-    ];
+    ],
+      diag => [
+        qr/unknown if .+?\Q$path\E.+? actually finished/,
+        qr/No tests run/,
+      ],
+    );
   };
 
   # A file that doesn't exist.

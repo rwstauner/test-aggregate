@@ -3,6 +3,7 @@ aggtests-extras/die.t
 aggtests-extras/fake_read_failure.t
 aggtests-extras/skip_to_end_undefined.t
 aggtests-nested/data_handle.t
+aggtests-nested/number_of_tests.t
 aggtests/check_plan.t
 aggtests/done_testing.t
 aggtests/findbin.t

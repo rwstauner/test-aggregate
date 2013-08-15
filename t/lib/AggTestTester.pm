@@ -120,7 +120,7 @@ sub run {
   # Check diag to see that we ran each script.
   # This is redundant with the setup block test but it makes me feel good.
   my @exp_diags = (
-    (map { qr/ $_ \(\d out of ${\scalar @{ $self->{tests} }}\)/ }
+    (map { qr/ \Q$_\E \(\d out of ${\scalar @{ $self->{tests} }}\)/ }
       @{ $self->{tests} }),
     @{ $self->{diag} },
   );

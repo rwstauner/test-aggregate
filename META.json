@@ -42,19 +42,19 @@
    "provides" : {
       "Test::Aggregate" : {
          "file" : "lib/Test/Aggregate.pm",
-         "version" : "0.367"
+         "version" : "0.368"
       },
       "Test::Aggregate::Base" : {
          "file" : "lib/Test/Aggregate/Base.pm",
-         "version" : "0.367"
+         "version" : "0.368"
       },
       "Test::Aggregate::Builder" : {
          "file" : "lib/Test/Aggregate/Builder.pm",
-         "version" : "0.367"
+         "version" : "0.368"
       },
       "Test::Aggregate::Nested" : {
          "file" : "lib/Test/Aggregate/Nested.pm",
-         "version" : "0.367"
+         "version" : "0.368"
       }
    },
    "release_status" : "stable",
@@ -66,7 +66,7 @@
          "url" : "https://github.com/rwstauner/test-aggregate"
       }
    },
-   "version" : "0.367",
+   "version" : "0.368",
    "x_contributors" : [
       "Curtis \"Ovid\" Poe <ovid@cpan.org>",
       "Florian Ragwitz <flora@cpan.org>",

@@ -1,5 +1,8 @@
 Revision history for Test-Aggregate
 
+0.368  2013-08-14
+        - Fix tests on windows
+
 0.367  2013-08-13
         - Improve Test::Aggregate::Nested error handling:
           Don't treat undef as a failure;

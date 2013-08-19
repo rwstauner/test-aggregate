@@ -5,7 +5,6 @@ use warnings;
 
 use lib 't/lib';
 use AggTestTester;
-use Test::Aggregate::Nested;
 use Test::More;
 
 only_with_nested {

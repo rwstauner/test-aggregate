@@ -5,7 +5,6 @@ use warnings;
 use Test::More;
 use lib 't/lib';
 use AggTestTester;
-use File::Spec::Functions qw(catfile); # core
 
 my $path = catfile(qw(aggtests-does-not-exist no-really-it-should-not-exist.t));
 {

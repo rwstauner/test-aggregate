@@ -5,12 +5,14 @@ use warnings;
 package # no_index
   AggTestTester;
 
+use File::Spec::Functions qw(catfile); # core
 use Test::More;
 use Exporter;
 our @ISA = qw(Exporter);
 
 our @EXPORT = qw(
   aggregate
+  catfile
   only_with_nested
 );
 

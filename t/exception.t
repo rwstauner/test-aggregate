@@ -5,7 +5,6 @@ use warnings;
 use Test::More;
 use lib 't/lib';
 use AggTestTester;
-use File::Spec::Functions qw(catfile); # core
 
 my $dir = 'aggtests-extras';
 my @agg_tests = qw( die );

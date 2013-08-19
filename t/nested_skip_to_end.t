@@ -5,7 +5,6 @@ use warnings;
 
 use lib 't/lib';
 use AggTestTester;
-use File::Spec::Functions qw(catfile); # core
 use Test::Aggregate::Nested;
 use Test::More;
 

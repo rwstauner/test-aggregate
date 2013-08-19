@@ -14,10 +14,17 @@ use vars qw(@ISA @EXPORT @EXPORT_OK);
 our $VERSION = '0.368';
 $VERSION = eval $VERSION;
 
+our $_pid = $$;
+
 BEGIN { 
     $ENV{TEST_AGGREGATE} = 1;
     *CORE::GLOBAL::exit = sub {
         my ($package, $filename, $line) = caller;
+
+      # Warn about exit being called unless there's been a fork()
+      # (in which case some form of exit is expected).
+      if( $_pid == $$ ){
+
         print STDERR <<"        END_EXIT_WARNING";
 ********
 WARNING!
@@ -28,6 +35,9 @@ Line:    $line
 WARNING!
 ********
         END_EXIT_WARNING
+
+      }
+
         exit(@_);
     };
 };

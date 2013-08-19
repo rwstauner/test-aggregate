@@ -114,6 +114,8 @@ Please upgrade to version 0.8901 or newer to use Test::Aggregate::Nested.
 sub run {
     my $self = shift;
 
+    local $Test::Aggregate::Base::_pid = $$;
+
     my %test_phase;
     foreach my $attr ( $self->_code_attributes ) {
         my $method = "_$attr";

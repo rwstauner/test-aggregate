@@ -262,6 +262,8 @@ sub _do_dry_run {
 sub run {
     my $self  = shift;
 
+    local $Test::Aggregate::Base::_pid = $$;
+
     my $verbose = $self->_verbose;
 
     my @tests = $self->_get_tests;

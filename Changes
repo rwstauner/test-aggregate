@@ -1,6 +1,6 @@
 Revision history for Test-Aggregate
 
-{{$NEXT}}
+0.369  2013-08-25
         - Don't print warning when exit() is called if it's called from
           a child process (if the pid has changed),
           since it seems likely that if the process has forked

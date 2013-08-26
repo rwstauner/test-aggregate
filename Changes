@@ -1,6 +1,10 @@
 Revision history for Test-Aggregate
 
 {{$NEXT}}
+        - Don't print warning when exit() is called if it's called from
+          a child process (if the pid has changed),
+          since it seems likely that if the process has forked
+          the child is expected to exit in some way.
         - Reformat dates in change log to appease CPAN::Changes.
           Thanks, Neil Bowers.
 

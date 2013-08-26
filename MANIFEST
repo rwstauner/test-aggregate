@@ -1,6 +1,7 @@
 .mailmap
 aggtests-extras/die.t
 aggtests-extras/fake_read_failure.t
+aggtests-extras/fork_and_exit.t
 aggtests-extras/skip_to_end_undefined.t
 aggtests-nested/data_handle.t
 aggtests-nested/number_of_tests.t
@@ -27,6 +28,7 @@ README
 t/00-load.t
 t/aggregate.t
 t/exception.t
+t/fork_and_exit.t
 t/lib/AggTestTester.pm
 t/lib/Slow/Loading/Module.pm
 t/nested.t

@@ -17,7 +17,7 @@ SKIP: {
   # to spend any more time trying to figure it out.
   # If you know or care, patches are most welcome.
   skip('Skip nested fork test on windows', 1)
-    if $^O eq 'Win32';
+    if $^O eq 'MSWin32';
 
 only_with_nested {
   subtest nested => sub {

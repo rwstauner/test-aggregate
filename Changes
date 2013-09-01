@@ -3,6 +3,7 @@ Revision history for Test-Aggregate
 0.370  Not Released
         - Fix interpolation bug that could cause 'Unrecognized escape'
           warning on some platforms.
+        - Skip nested fork test on Windows.
 
 0.369  2013-08-25
         - Don't print warning when exit() is called if it's called from

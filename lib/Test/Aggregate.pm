@@ -466,7 +466,7 @@ $findbin
         if ( $setup ) {
             $code .= "    $setup->('$test');\n";
         }
-        $code .= qq{    run_this_test_program( $package => "$test", $current_test, $total_tests, $verbose );};
+        $code .= qq{    run_this_test_program( $package => '$test', $current_test, $total_tests, $verbose );};
 
         if ( $teardown ) {
             $code .= "    $teardown->('$test');\n";

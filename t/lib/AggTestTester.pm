@@ -59,6 +59,7 @@ sub aggregator {
 sub run {
   my $self = shift;
   my $mod = $self->{mod};
+  my $is_nested = ($mod =~ /::Nested$/);
   my $tb = {};
   my @ran;
 
@@ -107,7 +108,7 @@ sub run {
     );
 
     # Nested sets a plan so it needs to run in a subtest.
-    if( $self->{mod} =~ /Nested$/ ){
+    if( $is_nested ){
       # Therefore we'll need to expect another ok().
       push @exp_results, [1, qr/Nested/, 'Tester subtest'];
       Test::More::subtest(Nested => sub { $agg->run })
@@ -124,8 +125,10 @@ sub run {
   # Check diag to see that we ran each script.
   # This is redundant with the setup block test but it makes me feel good.
   my @exp_diags = (
-    (map { qr/ \Q$_\E \(\d out of ${\scalar @{ $self->{tests} }}\)/ }
-      @{ $self->{tests} }),
+    (map { (
+      (!$is_nested && $ENV{TEST_VERBOSE} ? qr/[*]{8} running tests for \Q$_\E [*]{8}/ : ()),
+      qr/ \Q$_\E \(\d out of ${\scalar @{ $self->{tests} }}\)/,
+    ) } @{ $self->{tests} }),
     @{ $self->{diag} },
   );
   my @diags = @{ $tb->{diag} };

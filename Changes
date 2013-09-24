@@ -1,5 +1,11 @@
 Revision history for Test-Aggregate
 
+0.371  Not Released
+        - Fix bug in our test suite that failed to count enough diagnostics
+          when run under verbose mode.
+          Closes rt-88912 (and http://bugs.debian.org/724297).
+          Thanks to gregor herrmann, Debian Perl Group for reporting.
+
 0.370  Not Released
         - Fix interpolation bug that could cause 'Unrecognized escape'
           warning on some platforms.

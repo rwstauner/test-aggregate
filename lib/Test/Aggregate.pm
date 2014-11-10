@@ -247,6 +247,17 @@ problems.
 
 =back
 
+=cut
+
+sub new {
+    my $class = shift;
+    my $self = $class->SUPER::new(@_);
+    if ($self->{no_generate_plan}) {
+        croak "no_generate_plan is not supported in Test::Aggregate";
+    }
+    return $self;
+}
+
 =head2 C<run>
 
  $tests->run;

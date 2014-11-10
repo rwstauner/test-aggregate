@@ -71,16 +71,15 @@ we ran tests for.
 C<Test::Aggregate::Nested> asserts a plan equal to the number of test files
 aggregated, something which C<Test::Aggregate> could not do.  Because of this,
 we no longer export C<Test::More> functions.  If you need additional tests
-before or after aggregation, you'll need to run the aggregated tests in a
-subtest:
+before or after aggregation, you can disable the generation of the plan with
+the parameter C<no_generate_plan>:
 
- use Test::More tests => 2;
- use Test::Aggregate::Nested;
+    use Test::More;
+    use Test::Aggregate::Nested;
 
- subtest 'Nested tests' => sub {
-     Test::Aggregate::Nested->new({ dirs => 'aggtests/' })->run;
- };
- ok $some_other_test;
+    Test::Aggregate::Nested->new({ dirs => 'aggtests/', no_generate_plan => 1 })->run;
+    ok $some_other_test;
+    done_testing();
 
 =head1 CAVEATS
 
@@ -125,7 +124,9 @@ sub run {
     my @tests = $self->_get_tests;
 
     my ( $current, $total ) = ( 0, scalar @tests );
-    plan tests => $total;
+    if (! $self->{no_generate_plan}) {
+        plan tests => $total;
+    }
     $test_phase{startup}->();
     for my $test (@tests) {
         $current++;

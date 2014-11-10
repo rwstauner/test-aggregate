@@ -114,6 +114,7 @@ sub new {
         dry
         dump
         findbin
+        no_generate_plan
         set_filenames
         shuffle
         test_nowarnings

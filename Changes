@@ -1,5 +1,9 @@
 Revision history for Test-Aggregate
 
+0.372  TODO
+        - Add 'no_generate_plan' option to Test::Aggregate::Nested.
+          Thanks to David D Lowe for the pull request (gh-3 and rt-100246).
+
 0.371  2013-09-23
         - Fix bug in our test suite that failed to count enough diagnostics
           when run under verbose mode.

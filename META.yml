@@ -1,19 +1,19 @@
 ---
 abstract: 'Aggregate C<*.t> tests to make them run faster.'
 author:
-  - "Curtis \"Ovid\" Poe <ovid@cpan.org>"
+  - 'Curtis "Ovid" Poe <ovid@cpan.org>'
 build_requires:
-  Test::Most: 0.21
-  Test::Simple: 0.94
-  Test::Trap: 0
+  Test::Most: '0.21'
+  Test::Simple: '0.94'
+  Test::Trap: '0'
 configure_requires:
-  Module::Build: 0.40
+  Module::Build: '0.42'
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4007, CPAN::Meta::Converter version 2.132140'
+generated_by: 'Module::Build version 0.421, CPAN::Meta::Converter version 2.143240'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: Test-Aggregate
 provides:
   Test::Aggregate:
@@ -29,19 +29,19 @@ provides:
     file: lib/Test/Aggregate/Nested.pm
     version: '0.372'
 recommends:
-  Data::Dump::Streamer: 1.11
-  Perl::Tidy: 20060614
-  Test::More: 0.94
+  Data::Dump::Streamer: '1.11'
+  Perl::Tidy: '20060614'
+  Test::More: '0.94'
 requires:
-  FindBin: 1.47
-  Test::Harness: 3.09
-  Test::NoWarnings: 0
+  FindBin: '1.47'
+  Test::Harness: '3.09'
+  Test::NoWarnings: '0'
 resources:
   license: http://dev.perl.org/licenses/
   repository: https://github.com/rwstauner/test-aggregate
 version: '0.372'
 x_contributors:
-  - "Curtis \"Ovid\" Poe <ovid@cpan.org>"
+  - 'Curtis "Ovid" Poe <ovid@cpan.org>'
   - 'Florian Ragwitz <flora@cpan.org>'
   - 'Shlomi Fish <shlomif@cpan.org>'
   - 'Randy Stauner <rwstauner@cpan.org>'

@@ -32,6 +32,7 @@ t/fork_and_exit.t
 t/lib/AggTestTester.pm
 t/lib/Slow/Loading/Module.pm
 t/nested.t
+t/nested_no_generate_plan.t
 t/nested_skip_to_end.t
 t/pre_post.t
 t/pre_post_nested.t

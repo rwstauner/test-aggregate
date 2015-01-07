@@ -1,6 +1,6 @@
 Revision history for Test-Aggregate
 
-0.372  TODO
+0.372  2015-01-07
         - Add 'no_generate_plan' option to Test::Aggregate::Nested.
           Thanks to David D Lowe for the pull request (gh-3 and rt-100246).
 

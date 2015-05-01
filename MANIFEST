@@ -1,4 +1,5 @@
 .mailmap
+.travis.yml
 aggtests-extras/die.t
 aggtests-extras/fake_read_failure.t
 aggtests-extras/fork_and_exit.t

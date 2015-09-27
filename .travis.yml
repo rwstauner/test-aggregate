@@ -8,8 +8,6 @@ perl:
 env:
   global:
     - COVERAGE=1
-    - TRAVIS_PERL_REPO=git://github.com/rwstauner/travis-perl-helpers TRAVIS_PERL_BRANCH=buildpl-test-files
 
 before_install:
-  #- eval $(curl https://travis-perl.github.io/init) --auto
-  - eval $(curl https://raw.githubusercontent.com/rwstauner/travis-perl.github.io/repo-branch-vars/init) --auto
+  - eval $(curl https://travis-perl.github.io/init) --auto

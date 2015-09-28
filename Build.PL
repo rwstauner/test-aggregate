@@ -1,5 +1,6 @@
 # git ls-files lib | xargs perl-reversion -bump
 # perl Build.PL && ./Build manifest && ./Build test && ./Build dist
+# # git add/commit
 # cpan-upload `ls Test-Aggregate-*.tar.gz | tail -n1`
 # git tag `awk '/^version: / { print " -a " $2 " -m " $2 }' META.yml` && git push && git push --tags
 

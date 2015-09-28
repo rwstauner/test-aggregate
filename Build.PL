@@ -2,7 +2,7 @@
 # perl Build.PL && ./Build manifest && ./Build test && ./Build dist
 # # git add/commit
 # cpan-upload `ls Test-Aggregate-*.tar.gz | tail -n1`
-# git tag `awk '/^version: / { print " -a " $2 " -m " $2 }' META.yml` && git push && git push --tags
+# git tag `perl -MJSON::PP -0777 -e '$v=decode_json(<>)->{version}; print "-a $v -m $v"' META.json` && git push && git push --tags
 
 use strict;
 use warnings;

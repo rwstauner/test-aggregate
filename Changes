@@ -1,5 +1,8 @@
 Revision history for Test-Aggregate
 
+0.374  2016-08-16
+        - Spelling fix (thanks to gregor herrmann rt-116399).
+
 0.373  2015-09-27
         - Bail out of test suite if using newer (currently incompatible)
           Test::More (1.3+).  Thanks to E. Choroba for the pull request (gh-4).

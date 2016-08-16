@@ -141,7 +141,7 @@ following keys:
 =item * C<dirs> (either this or C<tests> is mandatory)
 
 The directories to look in for the aggregated tests.  This may be a scalar
-value of a single directory or an array refernce of multiple directories.
+value of a single directory or an array reference of multiple directories.
 
 =item * C<tests> (either this or C<dirs> is mandatory)
 

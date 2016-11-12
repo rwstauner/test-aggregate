@@ -9,6 +9,14 @@ use warnings;
 use Module::Build;
 
 use 5.006;
+eval {
+    require Test::More;
+};
+my $v = $Test::More::VERSION || 0;
+if ($v >= 1.3) {
+    print "This module only works with Test::More version < 1.3, but you have $v\n";
+    exit 0; #prevent sending FAIL to cpantesters
+}
 
 my $builder = Module::Build->new(
     module_name       => 'Test::Aggregate',

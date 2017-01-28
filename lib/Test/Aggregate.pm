@@ -25,11 +25,11 @@ Test::Aggregate - Aggregate C<*.t> tests to make them run faster.
 
 =head1 VERSION
 
-Version 0.374
+Version 0.375
 
 =cut
 
-our $VERSION = '0.374';
+our $VERSION = '0.375';
 $VERSION = eval $VERSION;
 
 =head1 SYNOPSIS

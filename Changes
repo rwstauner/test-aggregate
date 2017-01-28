@@ -1,5 +1,9 @@
 Revision history for Test-Aggregate
 
+0.375  2017-01-08
+        - Abort installation if using newer (incompatible) Test::More.
+          Thanks to Alexandr Ciornii for the pull request (gh-5).
+
 0.374  2016-08-16
         - Spelling fix (thanks to gregor herrmann rt-116399).
 
